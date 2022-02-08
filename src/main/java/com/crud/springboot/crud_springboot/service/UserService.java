@@ -1,7 +1,6 @@
 package com.crud.springboot.crud_springboot.service;
 
 import com.crud.springboot.crud_springboot.models.User;
-//import web.models.User;
 
 import javax.validation.Valid;
 import java.util.List;

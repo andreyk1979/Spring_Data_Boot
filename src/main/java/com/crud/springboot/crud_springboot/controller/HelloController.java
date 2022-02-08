@@ -8,15 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.validation.Valid;
 
 @Controller
 public class HelloController {
-
-    @Autowired
-    private EntityManager entityManager;
 
     private final UserService userService;
 
@@ -57,7 +52,7 @@ public class HelloController {
         return "/edit";
     }
 
-    @PatchMapping("/{id}")
+    @PostMapping("/{id}")
     public String update(@ModelAttribute("person") @Valid User user, BindingResult bindingResult, @PathVariable("id") long id) {
         if (bindingResult.hasErrors())
             return "/edit";
@@ -67,7 +62,6 @@ public class HelloController {
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") long id) {
-        //User user = userService.getById(id);
         userService.delete(id);
         return "redirect:/user";
     }
